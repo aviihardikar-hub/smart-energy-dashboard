@@ -18,7 +18,7 @@ if "screen" not in st.session_state:
 if "step" not in st.session_state:
     st.session_state.step = 0
 if "values" not in st.session_state:
-    st.session_state.values = {n: {"quantity": "0", "watts": str(w), "hours": "0"} for n, _, w, _ in APPS}
+    st.session_state["values"] = {n: {"quantity": "0", "watts": str(w), "hours": "0"} for n, _, w, _ in APPS}
 if "rate" not in st.session_state:
     st.session_state.rate = "8"
 if "days" not in st.session_state:
@@ -161,7 +161,7 @@ elif screen=="Calculator":
         st.markdown(f'<div class="appliance-art">{symbol}</div>',unsafe_allow_html=True)
         st.caption(f"{category} · Suggested wattage: {default} W. Use the rating on your appliance if available.")
     with right:
-        item=st.session_state["values"][name]
+        item = st.session_state["values"][name]
         item['quantity']=st.text_input("Number of appliances",value=item['quantity'],key="q_"+name,placeholder="e.g. 1")
         item['watts']=st.text_input("Power rating (watts)",value=item['watts'],key="w_"+name,placeholder="e.g. 1500")
         item['hours']=st.text_input("Hours used per day",value=item['hours'],key="h_"+name,placeholder="e.g. 4")
